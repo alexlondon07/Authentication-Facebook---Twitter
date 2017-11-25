@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Authentication Twitter - Facebook</string>
+    <string name="com.twitter.sdk.android.CONSUMER_KEY">UbWeok7LChx5ZQVVlMSFpBeux</string>
+    <string name="com.twitter.sdk.android.CONSUMER_SECRET">MgKrpBcPoD9MZFHC3XAYStSihQq18dKBRMcrD9FaRzx6mn6Dxl</string>
+
+    <string name="facebook_app_id">300417990464867</string>
+    <string name="fb_login_protocol_scheme">fb300417990464867</string>
+    <string name="Cancelado">Cancelado</string>
+
+</resources>
