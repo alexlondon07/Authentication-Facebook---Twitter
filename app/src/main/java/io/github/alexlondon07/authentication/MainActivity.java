@@ -2,8 +2,11 @@ package io.github.alexlondon07.authentication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
@@ -34,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     private TwitterLoginButton twitterLoginButton;
     private LoginButton loginButtonFacebook;
     private CallbackManager callbackManager;
+    private BottomSheetDialog bottomSheetDialog;
+    private Button buttonDialog;
 
 
     @Override
@@ -42,14 +47,29 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Twitter.initialize(this);
         setContentView(R.layout.activity_main);
-
+        callbackManager = CallbackManager.Factory.create();
         twitterLoginButton = findViewById(R.id.login_twitter);
         loginButtonFacebook = findViewById(R.id.login_facebook);
+        buttonDialog = findViewById(R.id.button_dialog);
 
-        callbackManager = CallbackManager.Factory.create();
-        loginTwitter();
+        buttonDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottomSheetDialog.show();
+            }
+        });
+
         
+        showCustomDialog();
+        loginTwitter();
         loginFacebook();
+    }
+
+    private void showCustomDialog() {
+        View view = getLayoutInflater().inflate(R.layout.bottomsheet, null);
+        bottomSheetDialog = new BottomSheetDialog(this);
+        bottomSheetDialog.setContentView(view);
+        bottomSheetDialog.setCancelable(true);
     }
 
     private void loginFacebook() {
